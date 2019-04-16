@@ -8,6 +8,7 @@ import (
 	"github.com/gorilla/websocket" // go get github.com/gorilla/websocket
 )
 
+// TODO: The access to the clients map is not concurrency-safe.
 var clients = make(map[*websocket.Conn]bool)  // global : currently connected clients
 var broadcast = make(chan Message)            // global: broadcast message queue/ channel
 var connectionUpgrader = websocket.Upgrader{} // normal HTTP connections to websocket
